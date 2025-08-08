@@ -1,20 +1,22 @@
-// src/App.jsx
-
 import React from 'react';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer'; // Import the new component
+import ContactUs from './components/ContactUs';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
+      {/* Navigation Bar at the top */}
       <Navbar />
+
+      {/* Main content area */}
       <main className="main-content">
-        {/* Your main content goes here */}
-        <h1>Blog Grid</h1>
-        {/* ... */}
+        <ContactUs />
       </main>
-      <Footer /> {/* Render the Footer here */}
+
+      {/* Footer at the bottom */}
+      <Footer />
     </div>
   );
 }
