@@ -3,6 +3,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import AboutSection from './components/AboutSection';
+import AuctionGrid from './components/AuctionGrid';
 import Footer from './components/Footer'; // Import the new component
 import './App.css';
 
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <main className="main-content">
       <AboutSection />
+         <AuctionGrid />
       </main>
       <Footer /> {/* Render the Footer here */}
     </div>
