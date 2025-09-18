@@ -1,0 +1,193 @@
+/* BlogGrid.css — Luxury Auction Theme */
+
+:root {
+  --color-primary: #D4AF37;      /* Gold */
+  --color-secondary: #2C3E50;    /* Dark Blue */
+  --color-bg-light: #F8F9FA;
+  --color-bg-white: #FFFFFF;
+  --color-text-main: #2C3E50;
+  --color-text-muted: #6c757d;
+  --color-cta: #E67E22;
+  --color-border: #e9ecef;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
+
+.blog-grid-container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--color-secondary);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.section-header .subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-image-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.blog-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image {
+  transform: scale(1.05);
+}
+
+.category-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--color-primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-content {
+  padding: 24px;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.blog-date i {
+  margin-right: 4px;
+  color: var(--color-primary);
+}
+
+.blog-title {
+  font-size: 1.3rem;
+  color: var(--color-secondary);
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: color 0.3s;
+}
+
+.blog-card:hover .blog-title {
+  color: var(--color-primary);
+}
+
+.blog-excerpt {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.read-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-cta);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.read-more-link:hover {
+  color: var(--color-primary);
+  gap: 10px;
+}
+
+/* Load More Button */
+.load-more-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.load-more-btn {
+  background: var(--color-bg-light);
+  color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.load-more-btn:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .blog-grid-container {
+    margin: 40px auto;
+    padding: 0 15px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .blog-grid {
+    gap: 30px;
+  }
+
+  .blog-content {
+    padding: 20px;
+  }
+
+  .blog-title {
+    font-size: 1.2rem;
+  }
+}

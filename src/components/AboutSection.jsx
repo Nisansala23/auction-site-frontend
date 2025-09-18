@@ -1,60 +1,103 @@
 // src/components/AboutSection.jsx
-import React from 'react';
 
+import React from 'react';
 import FeatureItem from './FeatureItem';
 import './AboutSection.css';
 
+// ✅ Updated Icons (Simpler + More Auction-Themed)
+const GavelIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M15 5l7 7-7 7M8 12H2" strokeLinecap="round"/>
+  </svg>
+);
 
+const ShieldCheckIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-// You would import your icons here from a library like 'react-icons/fi' or 'react-icons/fa'
-// For example: import { FiBox, FiShield, FiStar } from 'react-icons/fi';
-const BoxIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.89 1.45l7.35 12.68a2 2 0 01-1.73 3.02L5.86 17.15A2 2 0 014.13 14.13L11.48 1.45a2 2 0 011.41 0z"></path></svg>;
-const ShieldIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>;
-const StarIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>;
+const TrophyIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M6 9H4.5a2.5 2.5 0 010-5H6" />
+    <path d="M18 9h1.5a2.5 2.5 0 000-5H18" />
+    <path d="M4 22h16" />
+    <path d="M10 14.66V17c0 .55.47.98.97 1.21C11.47 18.45 12 18.61 12 18.61s.53-.16 1.03-.4C13.53 17.97 14 17.55 14 17v-2.34" />
+    <path d="M18 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1z" />
+    <path d="M6 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1z" />
+  </svg>
+);
 
 const AboutSection = () => {
   return (
     <section className="about-container">
-      <div className="about-content">
-        <h2 className="section-title">Who We Are</h2>
-        <p className="intro-text">
-          Cras cursus faucibus enim id porta. Curabitur et feugiat tortor. Duis ut egestas lib. Aenean id lacin est. Mauris urn purus, docnri aliquet id elit id, tempus suscipit dui. Phasellus dictum sem sed ipsum posuer, eget tristique turpis ten. Sed sodales pur ide ex imperdiet of this year we are free offer that your type.
-        </p>
-        <div className="feature-list">
-          <FeatureItem
-            icon={<BoxIcon />}
-            title="Our Expert Solutions"
-            description="Praesent gravida nunc at tortor cursus, molestie dapibus purus posuere. Vestibulum commodo, massa eget rutrum feugiat."
-          />
-          <FeatureItem
-            icon={<ShieldIcon />}
-            title="Trusted Performance"
-            description="Praesent gravida nunc at tortor cursus, molestie dapibus purus posuere. Vestibulum commodo, massa eget rutrum feugiat."
-          />
-          <FeatureItem
-            icon={<StarIcon />}
-            title="Experience the Difference"
-            description="Praesent gravida nunc at tortor cursus, molestie dapibus purus posuere. Vestibulum commodo, massa eget rutrum feugiat."
-          />
-        </div>
-      </div>
-      <div className="about-image-gallery">
-        <div className="main-image-wrapper">
-          <img
-            src="src/Images/images.jpg"
-            alt="Main product"
-            className="main-image"
-          />
-          <div className="bidder-overlay">
-            <h4 className="bidder-count">5.6k Bidder</h4>
-            <p className="bidder-subtext">Number Of Total Bidder</p>
+      <div className="content-wrapper">
+        {/* Text Content */}
+        <div className="about-content">
+          <div className="section-header">
+            <span className="section-subtitle">ABOUT PROBID</span>
+            <h2 className="section-title">Who We Are</h2>
+          </div>
+
+          <p className="intro-text">
+            Since 2010, ProBid has connected collectors, investors, and enthusiasts with rare, authenticated treasures from around the world. 
+            Our expert curators verify every item, our secure platform protects every transaction, and our global community drives every bid.
+          </p>
+
+          <div className="feature-list">
+            <FeatureItem
+              icon={<GavelIcon />}
+              title="Expert Curation"
+              description="Every item is vetted by specialists in antiques, art, jewelry, and collectibles to ensure authenticity and value."
+            />
+            <FeatureItem
+              icon={<ShieldCheckIcon />}
+              title="Secure & Trusted"
+              description="Escrow payments, buyer protection, and verified seller profiles give you peace of mind with every transaction."
+            />
+            <FeatureItem
+              icon={<TrophyIcon />}
+              title="Global Community"
+              description="Join over 50,000 bidders worldwide competing for rare finds — from vintage watches to Renaissance manuscripts."
+            />
+          </div>
+
+          <div className="stats-row">
+            <div className="stat-item">
+              <div className="stat-number">50K+</div>
+              <div className="stat-label">Active Bidders</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">10K+</div>
+              <div className="stat-label">Items Sold</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-number">98%</div>
+              <div className="stat-label">Satisfaction Rate</div>
+            </div>
           </div>
         </div>
-        <img
-          src="src\Images\Old+Crows+Antique+Mall+Dealers.webp"
-          alt="Desktop setup"
-          className="secondary-image"
-        />
+
+        {/* Image Gallery */}
+        <div className="about-image-gallery">
+          <div className="main-image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1584275518945-9a1f320e45a8?auto=format&fit=crop&w=600&h=600&q=80"
+              alt="Auction gavel striking on wooden table with antique items"
+              className="main-image"
+            />
+            <div className="bidder-overlay">
+              <h4 className="bidder-count">50,000+ Bidder</h4>
+              <p className="bidder-subtext">Join Our Global Community</p>
+            </div>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1571896346575-5d91b0f802e7?auto=format&fit=crop&w=400&h=400&q=80"
+            alt="Antique shop interior with curated collectibles"
+            className="secondary-image"
+          />
+        </div>
       </div>
     </section>
   );

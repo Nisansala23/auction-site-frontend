@@ -1,0 +1,330 @@
+/* HomePage.css — Luxury Auction Theme */
+
+:root {
+  --color-primary: #D4AF37;
+  --color-secondary: #2C3E50;
+  --color-bg-light: #F8F9FA;
+  --color-bg-white: #FFFFFF;
+  --color-text-main: #2C3E50;
+  --color-text-muted: #6c757d;
+  --color-cta: #E67E22;
+  --color-danger: #E74C3C;
+  --color-success: #27AE60;
+  --color-border: #e9ecef;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, var(--color-bg-white) 0%, var(--color-bg-light) 100%);
+  padding: 80px 20px;
+}
+
+.hero-content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-text-column {
+  flex: 1;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: var(--color-primary); /* Gold highlight */
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--color-cta); /* Orange CTA for bidding */
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #d35400;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-cta);
+  border: 2px solid var(--color-cta);
+}
+
+.btn-secondary:hover {
+  background: #fef5eb;
+}
+
+/* Live Auction Banner */
+.live-auction-banner {
+  background: #fff8f8;
+  border: 1px solid #fbb;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--color-danger);
+  margin-bottom: 2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Trusted Partners */
+.trusted-partners {
+  margin-top: 2rem;
+}
+
+.partners-title {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.partner-logos {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.partner-logos img {
+  height: 30px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.8);
+  transition: filter 0.3s;
+}
+
+.partner-logos img:hover {
+  filter: grayscale(0%) brightness(1);
+}
+
+/* Image Grid */
+.hero-image-column {
+  flex: 1;
+  position: relative;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.main-image {
+  grid-row: span 3;
+  position: relative;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.current-bid-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.95);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  color: var(--color-primary);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.side-images > div {
+  position: relative;
+}
+
+.side-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.side-images img:hover {
+  transform: scale(1.03);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.badge.ending-soon {
+  background: var(--color-danger);
+}
+
+.badge.new {
+  background: var(--color-success);
+}
+
+.badge.featured {
+  background: var(--color-primary);
+}
+
+/* Stats Section */
+.stats-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 20px;
+  background: var(--color-bg-white);
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+/* How It Works */
+.how-it-works {
+  padding: 80px 20px;
+  background: var(--color-bg-light);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-secondary);
+  margin-bottom: 60px;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.step {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.step h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--color-secondary);
+}
+
+.step p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-content-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-image {
+    grid-row: auto;
+  }
+
+  .stats-section,
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

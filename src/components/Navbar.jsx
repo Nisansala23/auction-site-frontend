@@ -1,103 +1,198 @@
-// src/components/Navbar.jsx
-
-import React, { useState } from 'react';
-import './Navbar.css';
+// NewNavbar.jsx
+import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import "./Navbar.css";
 
 const Navbar = () => {
-  // State to manage the visibility of the dropdowns
-  const [auctionsDropdownOpen, setAuctionsDropdownOpen] = useState(false);
-  const [pagesDropdownOpen, setPagesDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navRef = useRef(null);
+
+  // Close on outside click
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setOpenDropdown(null);
+        setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const toggleDropdown = (menu) => {
+    setOpenDropdown((prev) => (prev === menu ? null : menu));
+  };
+
+  const closeAll = () => {
+    setOpenDropdown(null);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="header">
-      {/* Top Bar Section */}
-      <div className="top-bar">
-        <div className="top-bar-content">
-          <div className="contact-info">
-            <span className="info-item">
-              <i className="fa fa-envelope"></i> Info@example.com
-            </span>
-            <span className="info-item">
-              <i className="fa fa-life-ring"></i> Customer support
-            </span>
-          </div>
-          <div className="top-bar-links">
-            <a href="#" className="link">HOW TO BID</a>
-            <a href="#" className="link">SELL YOUR ITEM</a>
-            <span className="language">
-              <i className="fa fa-globe"></i> Language
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Section */}
-      <nav className="main-nav">
+      <nav className="main-nav" ref={navRef}>
         <div className="nav-content">
+          {/* Logo */}
           <div className="logo-container">
-            <a href="/" className="logo">
-              {/* Using a placeholder image */}
-              <img src="https://via.placeholder.com/100x40" alt="PROBID Logo" />
-            </a>
+            <Link to="/" className="logo" aria-label="Home">
+              <img src="/src/Images/auctioneer.jpg" alt="Logo" />
+            </Link>
           </div>
 
-          {/* Nav Links with Dropdowns */}
-          <ul className="nav-links">
-            <li className="nav-item"><a href="#" className="nav-link">Home</a></li>
-            
+          {/* Hamburger */}
+          <button
+            className="hamburger"
+            onClick={() => setMobileMenuOpen((s) => !s)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="primary-navigation"
+          >
+            <i className={`fa ${mobileMenuOpen ? "fa-times" : "fa-bars"}`} />
+          </button>
+
+          {/* Primary Nav */}
+          <ul
+            className={`nav-links ${mobileMenuOpen ? "active" : ""}`}
+            id="primary-navigation"
+          >
+            <li className="nav-item">
+              <Link to="/" className="nav-link" onClick={closeAll}>
+                Home
+              </Link>
+            </li>
+
             {/* Auctions Dropdown */}
-            <li 
-              className="nav-item dropdown"
-              onMouseEnter={() => setAuctionsDropdownOpen(true)}
-              onMouseLeave={() => setAuctionsDropdownOpen(false)}
+            <li
+              className={`nav-item dropdown ${
+                openDropdown === "auctions" ? "open" : ""
+              }`}
             >
-              <a href="#" className="nav-link">Auctions <i className="fa fa-caret-down"></i></a>
-              {auctionsDropdownOpen && (
+              <button
+                className="nav-link"
+                onClick={() => toggleDropdown("auctions")}
+                aria-expanded={openDropdown === "auctions"}
+              >
+                Auctions{" "}
+                <i
+                  className={`fa fa-chevron-${
+                    openDropdown === "auctions" ? "up" : "down"
+                  }`}
+                />
+              </button>
+              {openDropdown === "auctions" && (
                 <ul className="dropdown-menu">
-                  <li><a href="#" className="dropdown-link">All Auctions</a></li>
-                  <li><a href="#" className="dropdown-link">Live Bidding</a></li>
-                  <li><a href="#" className="dropdown-link">Featured Auctions</a></li>
+                  <li>
+                    <Link to="/auctiongrid" onClick={closeAll}>
+                      All Auctions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/AuctionItem" onClick={closeAll}>
+                      Live Bidding
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/FeatureItem" onClick={closeAll}>
+                      Featured Auctions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/ending-soon" onClick={closeAll}>
+                      Ending Soon
+                    </Link>
+                  </li>
                 </ul>
               )}
             </li>
-            
-            <li className="nav-item"><a href="#" className="nav-link active">Blog</a></li>
-            
-            {/* Pages Dropdown */}
-            <li 
-              className="nav-item dropdown"
-              onMouseEnter={() => setPagesDropdownOpen(true)}
-              onMouseLeave={() => setPagesDropdownOpen(false)}
+
+            {/* Blog */}
+            <li className="nav-item">
+              <Link to="/blog-grid" className="nav-link" onClick={closeAll}>
+                Blog
+              </Link>
+            </li>
+
+            {/* Pages Dropdown (with nested Seller) */}
+            <li
+              className={`nav-item dropdown ${
+                openDropdown === "pages" ? "open" : ""
+              }`}
             >
-              <a href="#" className="nav-link">Pages <i className="fa fa-caret-down"></i></a>
-              {pagesDropdownOpen && (
+              <button
+                className="nav-link"
+                onClick={() => toggleDropdown("pages")}
+                aria-expanded={openDropdown === "pages"}
+              >
+                Pages{" "}
+                <i
+                  className={`fa fa-chevron-${
+                    openDropdown === "pages" ? "up" : "down"
+                  }`}
+                />
+              </button>
+              {openDropdown === "pages" && (
                 <ul className="dropdown-menu">
-                  <li><a href="#" className="dropdown-link">About</a></li>
-                  <li><a href="#" className="dropdown-link">Category</a></li>
-                  <li><a href="#" className="dropdown-link">Seller</a></li>
-                  <li><a href="#" className="dropdown-link">How to Sell</a></li>
-                  <li><a href="#" className="dropdown-link">How to Bid</a></li>
-                  <li><a href="#" className="dropdown-link">Dashboard</a></li>
-                  <li><a href="#" className="dropdown-link">FAQs</a></li>
-                  <li><a href="#" className="dropdown-link">Error</a></li>
+                  <li>
+                    <Link to="/about" onClick={closeAll}>
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/categories" onClick={closeAll}>
+                      Category
+                    </Link>
+                  </li>
+                  <li className="submenu-item">
+                    <Link to="/seller-details-1" onClick={closeAll}>
+                      Seller 
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/how-to-sell" onClick={closeAll}>
+                      How To Sell
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/how-to-bid" onClick={closeAll}>
+                      How To Bid
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard" onClick={closeAll}>
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/faqs" onClick={closeAll}>
+                      FAQs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/error" onClick={closeAll}>
+                      Error
+                    </Link>
+                  </li>
+
+                 
+                  
+                  
                 </ul>
               )}
             </li>
-            
-            <li className="nav-item"><a href="#" className="nav-link">Contact</a></li>
+
+            {/* Contact */}
+            <li className="nav-item">
+              <Link to="/contact" className="nav-link" onClick={closeAll}>
+                Contact
+              </Link>
+            </li>
           </ul>
 
-          {/* Search and Account */}
+          {/* Auth */}
           <div className="nav-actions">
-            <div className="search-box">
-              <input type="text" placeholder="Search your product..." />
-              <button className="search-button">
-                <i className="fa fa-search"></i>
-              </button>
-            </div>
-            <a href="#" className="account-button">
-              <i className="fa fa-user"></i> My Account
-            </a>
+            <Link to="/login" className="btn btn-outline" onClick={closeAll}>
+              Log In
+            </Link>
           </div>
         </div>
       </nav>

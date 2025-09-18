@@ -1,0 +1,18 @@
+:root {
+  /* === AUCTION-OPTIMIZED COLORS === */
+  --color-primary: #D4AF37;      /* Gold — main accent */
+  --color-secondary: #2C3E50;    /* Dark blue — headers, navbar */
+  --color-bg-light: #F8F9FA;     /* Light gray — backgrounds */
+  --color-bg-white: #FFFFFF;
+  --color-text-main: #2C3E50;
+  --color-text-muted: #6c757d;
+  --color-cta: #E67E22;          /* Bid buttons, highlights */
+  --color-danger: #E74C3C;       /* Ending soon, errors */
+  --color-success: #27AE60;      /* Winning, success states */
+  --color-border: #e9ecef;
+
+  /* Optional: shadows & transitions */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
